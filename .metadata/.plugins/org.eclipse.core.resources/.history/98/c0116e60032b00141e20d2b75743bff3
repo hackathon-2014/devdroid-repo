@@ -73,8 +73,6 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:text="Workout 1" />
-            
-     
 
             <TextView
                 android:id="@+id/playerone_workoutone"
