@@ -15,6 +15,7 @@ public final class R {
         public static final int abc_slide_in_top=0x7f040003;
         public static final int abc_slide_out_bottom=0x7f040004;
         public static final int abc_slide_out_top=0x7f040005;
+        public static final int fade_out=0x7f040006;
     }
     public static final class attr {
         /**  Custom divider drawable to use for elements in the action bar. 
@@ -1112,11 +1113,10 @@ containing a value of this type.
         public static final int action_menu_divider=0x7f050016;
         public static final int action_menu_presenter=0x7f050017;
         public static final int action_mode_close_button=0x7f050024;
-        public static final int action_settings=0x7f050058;
+        public static final int action_settings=0x7f050053;
         public static final int activity_chooser_view_content=0x7f050025;
         public static final int always=0x7f05000b;
         public static final int beginning=0x7f050011;
-        public static final int button1=0x7f050057;
         public static final int checkbox=0x7f05002d;
         public static final int collapseActionView=0x7f05000d;
         public static final int default_activity_button=0x7f050028;
@@ -1140,11 +1140,9 @@ containing a value of this type.
         public static final int normal=0x7f050000;
         public static final int player_one_name=0x7f05003f;
         public static final int player_two_name=0x7f050040;
-        public static final int playerone_workoutfour=0x7f050055;
         public static final int playerone_workoutone=0x7f050046;
         public static final int playerone_workoutthree=0x7f050050;
         public static final int playerone_workouttwo=0x7f05004b;
-        public static final int playertwo_workoutfour=0x7f050056;
         public static final int playertwo_workoutone=0x7f050047;
         public static final int playertwo_workoutthree=0x7f050051;
         public static final int playertwo_workouttwo=0x7f05004c;
@@ -1168,6 +1166,7 @@ containing a value of this type.
         public static final int showHome=0x7f050004;
         public static final int showTitle=0x7f050006;
         public static final int split_action_bar=0x7f05001e;
+        public static final int start_battle_button=0x7f050052;
         public static final int submit_area=0x7f050039;
         public static final int tabMode=0x7f050002;
         public static final int time_view=0x7f050042;
@@ -1178,15 +1177,12 @@ containing a value of this type.
         public static final int useLogo=0x7f050003;
         public static final int versus_image=0x7f05003e;
         public static final int withText=0x7f05000c;
-        public static final int workout_four=0x7f050054;
-        public static final int workout_layout_four=0x7f050052;
         public static final int workout_layout_one=0x7f050043;
         public static final int workout_layout_three=0x7f05004d;
         public static final int workout_layout_two=0x7f050048;
         public static final int workout_one=0x7f050045;
         public static final int workout_three=0x7f05004f;
         public static final int workout_two=0x7f05004a;
-        public static final int workoutfour_click=0x7f050053;
         public static final int workoutone_click=0x7f050044;
         public static final int workoutthree_click=0x7f05004e;
         public static final int workouttwo_click=0x7f050049;

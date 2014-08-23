@@ -1,13 +1,21 @@
 package com.devdroid.healthycompetition;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.AnimationUtils;
+import android.view.animation.TranslateAnimation;
+import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
-public class BattleFieldActivity extends ActionBarActivity {
+public class BattleFieldActivity extends ActionBarActivity implements AnimationListener{
 
 
 	private TextView mPlayer1;
@@ -19,19 +27,16 @@ public class BattleFieldActivity extends ActionBarActivity {
 	private RelativeLayout mWorkoutLayout1;
 	private RelativeLayout mWorkoutLayout2;
 	private RelativeLayout mWorkoutLayout3;
-	private RelativeLayout mWorkoutLayout4;
-	
+
+
 	// Clickable Layouts
 	private RelativeLayout mWorkoutLayoutClick1;
 	private RelativeLayout mWorkoutLayoutClick2;
 	private RelativeLayout mWorkoutLayoutClick3;
-	private RelativeLayout mWorkoutLayoutClick4;
-	
 
 	private TextView mWorkout1;
 	private TextView mWorkout2;
 	private TextView mWorkout3;
-	private TextView mWorkout4;
 
 	// m Player ?  to Workout ?
 	private TextView mP1W1;
@@ -40,16 +45,29 @@ public class BattleFieldActivity extends ActionBarActivity {
 	private TextView mP2W2;
 	private TextView mP1W3;
 	private TextView mP2W3;
-	private TextView mP1W4;
-	private TextView mP2W4;
+	
+	// Animation fade out
+	Animation animFadeOut;
 
+	// Flag to check which Layout was faded out
+	private Boolean mLayoutGone1 = false;
+	private Boolean mLayoutGone2 = false;
+	private Boolean mLayoutGone3 = false;
+	
 	// Start Button hidden first
+	private Button mStartButton;
 
 
-	@Override
+	@SuppressLint("ResourceAsColor") @Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_registration);
+		setContentView(R.layout.battlefield_layout);
+		
+		// Load animation
+		animFadeOut = AnimationUtils.loadAnimation(getApplicationContext(),
+                R.anim.fade_out);
+		// Set animation listener
+		animFadeOut.setAnimationListener(this);
 
 		// Get player 1 and 2 names
 		mPlayer1 = (TextView) findViewById(R.id.player_one_name);
@@ -60,22 +78,78 @@ public class BattleFieldActivity extends ActionBarActivity {
 
 		// Get all Workout Layouts for animations
 		mWorkoutLayout1 = (RelativeLayout) findViewById(R.id.workout_layout_one);
-		mWorkoutLayout1.bringToFront();
+		//This works-> mWorkoutLayout1.setBackgroundColor(this.getResources().getColor(R.color.light_red));
 		mWorkoutLayout2 = (RelativeLayout) findViewById(R.id.workout_layout_two);
-		mWorkoutLayout1.bringToFront();
 		mWorkoutLayout3 = (RelativeLayout) findViewById(R.id.workout_layout_three);
-		mWorkoutLayout1.bringToFront();
-		mWorkoutLayout4 = (RelativeLayout) findViewById(R.id.workout_layout_four);
-		mWorkoutLayout1.bringToFront();
-		
+
 		// Get all Workout Layouts for Clicking
 		mWorkoutLayoutClick1 = (RelativeLayout) findViewById(R.id.workoutone_click);
+		mWorkoutLayoutClick1.bringToFront();
+		// If Workout1 clicked
+		mWorkoutLayoutClick1.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// Check for Validity
+
+				// Animate Workout 1
+				mLayoutGone1 = false;
+				mWorkoutLayout2.startAnimation(animFadeOut);
+				mLayoutGone2 = true;
+				mWorkoutLayout3.startAnimation(animFadeOut);
+				mLayoutGone3 = true;
+				
+
+			}
+		});
+
+		mWorkoutLayoutClick2 = (RelativeLayout) findViewById(R.id.workouttwo_click);
+		mWorkoutLayoutClick2.bringToFront();
+		// If Workout2 is clicked
+		mWorkoutLayoutClick2.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// Check for Validity
+
+				// Animate Workout 2
+				mLayoutGone2 = false;
+				mWorkoutLayout1.startAnimation(animFadeOut);
+				mLayoutGone1 = true;
+				mWorkoutLayout3.startAnimation(animFadeOut);
+				mLayoutGone3 = true;
+
+			}
+		});
+
+		mWorkoutLayoutClick3 = (RelativeLayout) findViewById(R.id.workoutthree_click);
+		mWorkoutLayoutClick3.bringToFront();
+		// If Workout3 is clicked
+		mWorkoutLayoutClick3.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// Check for Validity
+
+				// Animate Workout 3	
+				mLayoutGone3 = false;
+				mWorkoutLayout1.startAnimation(animFadeOut);
+				mLayoutGone1 = true;
+				mWorkoutLayout2.startAnimation(animFadeOut);
+				mLayoutGone2 = true;
+				//mWorkoutLayout1.setVisibility(View.GONE);
+				//mWorkoutLayout2.setVisibility(View.GONE);
+				
+			}
+		});
+
+
+
 
 		// Get text for WorkoutField
 		mWorkout1 = (TextView) findViewById(R.id.workout_one);
 		mWorkout2 = (TextView) findViewById(R.id.workout_two);
 		mWorkout3 = (TextView) findViewById(R.id.workout_three);
-		mWorkout4 = (TextView) findViewById(R.id.workout_four);
 
 
 		// Get text for Points to Workout
@@ -88,9 +162,46 @@ public class BattleFieldActivity extends ActionBarActivity {
 		mP1W3 = (TextView) findViewById(R.id.playerone_workoutthree);
 		mP2W3 = (TextView) findViewById(R.id.playertwo_workoutthree);
 
-		mP1W4 = (TextView) findViewById(R.id.playerone_workoutfour);
-		mP2W4 = (TextView) findViewById(R.id.playertwo_workoutfour);
+		// Start Epic Battle!
+		mStartButton = (Button) findViewById(R.id.start_battle_button);
+	}
+	
+	public void SlideToDown(final RelativeLayout rL) {
+	    Animation slide = null;
+	    slide = new TranslateAnimation(Animation.RELATIVE_TO_SELF, 0.0f,
+	            Animation.RELATIVE_TO_SELF, 0.0f, Animation.RELATIVE_TO_SELF,
+	            0.0f, Animation.RELATIVE_TO_SELF, 5.2f);
 
+	    slide.setDuration(400);
+	    slide.setFillAfter(true);
+	    slide.setFillEnabled(true);
+	    rL.startAnimation(slide);
+
+	    slide.setAnimationListener(new AnimationListener() {
+
+	        @Override
+	        public void onAnimationStart(Animation animation) {
+
+	        }
+
+	        @Override
+	        public void onAnimationRepeat(Animation animation) {
+	        }
+
+	        @Override
+	        public void onAnimationEnd(Animation animation) {
+
+	            rL.clearAnimation();
+
+	            RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(
+	                    rL.getWidth(), rL.getHeight());
+	            lp.setMargins(0, rL.getWidth(), 0, 0);
+	            lp.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
+	            rL.setLayoutParams(lp);
+
+	        }
+
+	    });
 
 	}
 
@@ -112,6 +223,37 @@ public class BattleFieldActivity extends ActionBarActivity {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+
+	@Override
+	public void onAnimationStart(Animation animation) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onAnimationEnd(Animation animation) {
+		// Take any action after completing the animation
+
+				// check for fade out animation
+				if (animation == animFadeOut) {
+					Toast.makeText(getApplicationContext(), "Animation Stopped",
+							Toast.LENGTH_SHORT).show();
+					if(mLayoutGone1 == true){
+						mWorkoutLayout1.setVisibility(View.GONE);
+					}else if(mLayoutGone2 == true){
+						mWorkoutLayout2.setVisibility(View.GONE);
+					}else if(mLayoutGone3 == true){
+						mWorkoutLayout3.setVisibility(View.GONE);
+					}
+					
+				}
+	}
+
+	@Override
+	public void onAnimationRepeat(Animation animation) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

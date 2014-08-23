@@ -4,6 +4,7 @@ int anim abc_slide_in_bottom 0x7f040002
 int anim abc_slide_in_top 0x7f040003
 int anim abc_slide_out_bottom 0x7f040004
 int anim abc_slide_out_top 0x7f040005
+int anim fade_out 0x7f040006
 int attr actionBarDivider 0x7f01000f
 int attr actionBarItemBackground 0x7f010010
 int attr actionBarSize 0x7f01000e
@@ -267,11 +268,10 @@ int id action_context_bar 0x7f05001d
 int id action_menu_divider 0x7f050016
 int id action_menu_presenter 0x7f050017
 int id action_mode_close_button 0x7f050024
-int id action_settings 0x7f050058
+int id action_settings 0x7f050053
 int id activity_chooser_view_content 0x7f050025
 int id always 0x7f05000b
 int id beginning 0x7f050011
-int id button1 0x7f050057
 int id checkbox 0x7f05002d
 int id collapseActionView 0x7f05000d
 int id default_activity_button 0x7f050028
@@ -295,11 +295,9 @@ int id none 0x7f050010
 int id normal 0x7f050000
 int id player_one_name 0x7f05003f
 int id player_two_name 0x7f050040
-int id playerone_workoutfour 0x7f050055
 int id playerone_workoutone 0x7f050046
 int id playerone_workoutthree 0x7f050050
 int id playerone_workouttwo 0x7f05004b
-int id playertwo_workoutfour 0x7f050056
 int id playertwo_workoutone 0x7f050047
 int id playertwo_workoutthree 0x7f050051
 int id playertwo_workouttwo 0x7f05004c
@@ -323,6 +321,7 @@ int id showCustom 0x7f050007
 int id showHome 0x7f050004
 int id showTitle 0x7f050006
 int id split_action_bar 0x7f05001e
+int id start_battle_button 0x7f050052
 int id submit_area 0x7f050039
 int id tabMode 0x7f050002
 int id time_view 0x7f050042
@@ -333,15 +332,12 @@ int id up 0x7f050021
 int id useLogo 0x7f050003
 int id versus_image 0x7f05003e
 int id withText 0x7f05000c
-int id workout_four 0x7f050054
-int id workout_layout_four 0x7f050052
 int id workout_layout_one 0x7f050043
 int id workout_layout_three 0x7f05004d
 int id workout_layout_two 0x7f050048
 int id workout_one 0x7f050045
 int id workout_three 0x7f05004f
 int id workout_two 0x7f05004a
-int id workoutfour_click 0x7f050053
 int id workoutone_click 0x7f050044
 int id workoutthree_click 0x7f05004e
 int id workouttwo_click 0x7f050049

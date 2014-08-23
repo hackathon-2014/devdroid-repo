@@ -1,0 +1,127 @@
+package com.devdroid.healthycompetition;
+
+import android.annotation.SuppressLint;
+import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+
+public class BattleFieldActivity extends ActionBarActivity {
+
+
+	private TextView mPlayer1;
+	private TextView mPlayer2;
+
+	private TextView mCountDownTimer;
+
+	// Layouts for win/lose color
+	private RelativeLayout mWorkoutLayout1;
+	private RelativeLayout mWorkoutLayout2;
+	private RelativeLayout mWorkoutLayout3;
+	private RelativeLayout mWorkoutLayout4;
+
+	// Clickable Layouts
+	private RelativeLayout mWorkoutLayoutClick1;
+	private RelativeLayout mWorkoutLayoutClick2;
+	private RelativeLayout mWorkoutLayoutClick3;
+	private RelativeLayout mWorkoutLayoutClick4;
+
+
+	private TextView mWorkout1;
+	private TextView mWorkout2;
+	private TextView mWorkout3;
+	private TextView mWorkout4;
+
+	// m Player ?  to Workout ?
+	private TextView mP1W1;
+	private TextView mP2W1;
+	private TextView mP1W2;
+	private TextView mP2W2;
+	private TextView mP1W3;
+	private TextView mP2W3;
+	private TextView mP1W4;
+	private TextView mP2W4;
+
+	// Start Button hidden first
+
+
+	@SuppressLint("ResourceAsColor") @Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.battlefield_layout);
+
+		// Get player 1 and 2 names
+		mPlayer1 = (TextView) findViewById(R.id.player_one_name);
+		mPlayer2 = (TextView) findViewById(R.id.player_two_name);
+
+		// Get text for CountDown Timer	
+		mCountDownTimer = (TextView) findViewById(R.id.time_view);
+
+		// Get all Workout Layouts for animations
+		mWorkoutLayout1 = (RelativeLayout) findViewById(R.id.workout_layout_one);
+		mWorkoutLayout1.setBackgroundColor(R.color.light_red);
+		mWorkoutLayout2 = (RelativeLayout) findViewById(R.id.workout_layout_two);
+		mWorkoutLayout3 = (RelativeLayout) findViewById(R.id.workout_layout_three);
+		mWorkoutLayout4 = (RelativeLayout) findViewById(R.id.workout_layout_four);
+
+		// Get all Workout Layouts for Clicking
+		mWorkoutLayoutClick1 = (RelativeLayout) findViewById(R.id.workoutone_click);
+		mWorkoutLayoutClick1.setAlpha((float) 0.0);
+		mWorkoutLayoutClick1.bringToFront();
+
+		mWorkoutLayoutClick2 = (RelativeLayout) findViewById(R.id.workouttwo_click);
+		mWorkoutLayoutClick2.bringToFront();
+
+		mWorkoutLayoutClick3 = (RelativeLayout) findViewById(R.id.workoutthree_click);
+		mWorkoutLayoutClick3.bringToFront();
+
+		mWorkoutLayoutClick4 = (RelativeLayout) findViewById(R.id.workoutfour_click);
+		mWorkoutLayoutClick4.bringToFront();
+
+
+		// Get text for WorkoutField
+		mWorkout1 = (TextView) findViewById(R.id.workout_one);
+		mWorkout2 = (TextView) findViewById(R.id.workout_two);
+		mWorkout3 = (TextView) findViewById(R.id.workout_three);
+		mWorkout4 = (TextView) findViewById(R.id.workout_four);
+
+
+		// Get text for Points to Workout
+		mP1W1 = (TextView) findViewById(R.id.playerone_workoutone);
+		mP2W1 = (TextView) findViewById(R.id.playertwo_workoutone);
+
+		mP1W2 = (TextView) findViewById(R.id.playerone_workouttwo);
+		mP2W2 = (TextView) findViewById(R.id.playertwo_workouttwo);
+
+		mP1W3 = (TextView) findViewById(R.id.playerone_workoutthree);
+		mP2W3 = (TextView) findViewById(R.id.playertwo_workoutthree);
+
+		mP1W4 = (TextView) findViewById(R.id.playerone_workoutfour);
+		mP2W4 = (TextView) findViewById(R.id.playertwo_workoutfour);
+
+
+	}
+
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.registration, menu);
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// Handle action bar item clicks here. The action bar will
+		// automatically handle clicks on the Home/Up button, so long
+		// as you specify a parent activity in AndroidManifest.xml.
+		int id = item.getItemId();
+		if (id == R.id.action_settings) {
+			return true;
+		}
+		return super.onOptionsItemSelected(item);
+	}
+
+}
