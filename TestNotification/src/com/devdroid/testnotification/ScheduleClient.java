@@ -1,0 +1,75 @@
+package com.devdroid.testnotification;
+
+import java.util.Calendar;
+
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.Intent;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+
+/**
+ * This is our service client,  it is the 'middle-man' between the sercie and any activity 
+ * that wants to connect to the service
+ * @author admin
+ *
+ */
+public class ScheduleClient {
+	// The hour into our service
+	private ScheduleService mBoundService;
+	
+	// The cntext to start the service in
+	private Context mContext;
+	
+	// A flag if we are connected to the service or not
+	private boolean mIsBound;
+	
+	public ScheduleClient(Context context){
+		mContext = context;
+	}
+	
+	/**
+	 * Call this to connect your activity to your service
+	 */
+	public void doBindService(){
+		// Establish a connect with our service
+		mContext.bindService(new Intent(mContext, ScheduleService.class), mConnection, Context.BIND_AUTO_CREATE);
+		mIsBound = true;
+	}
+	
+	/**
+	 * When you attempt to connect to the service, this connection will be called with the result.
+	 * If we have succesfully connected we instantiate our service object so that we can call method on it.
+	 */
+	private ServiceConnection mConnection = new ServiceConnection(){
+		public void onServiceConnected(ComponentName className, IBinder service){
+			// This is called when the connection with our serive has been established,
+			// giving us the service object we can use to interact with our service.
+			mBoundService = ((ScheduleService.ServiceBinder) service).getService();
+		}
+		
+		public void onServiceDisconnected(ComponentName className){
+			mBoundService = null;
+		}
+	};	// End mConnection initializing
+	
+	/**
+	 * Tell our service to set an alarm for the given date
+	 * @param c a date to set the notification for
+	 */
+	public void setAlarmNotification(Calendar c){
+		mBoundService.setAlarm(c);
+	}
+	
+	/**
+	 * When you have finished with the service call this method to stop it
+	 * releasing your connection and resources
+	 */
+	public void doUnbindService(){
+		if(mIsBound){
+			// Detach our existing connection
+			mContext.unbindService(mConnection);
+			mIsBound = false;
+		}
+	}// end doUnbindService
+}

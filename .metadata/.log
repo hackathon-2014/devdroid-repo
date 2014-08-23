@@ -315,3 +315,6 @@ Binding(CTRL+SHIFT+ARROW_LEFT,
 		,,true),null),
 	org.eclipse.ui.defaultAcceleratorConfiguration,
 	org.eclipse.wst.sse.ui.structuredTextEditorScope,,cocoa,system)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-08-23 12:29:47.989
+!MESSAGE Failed to load properties file for project 'TestNotification'

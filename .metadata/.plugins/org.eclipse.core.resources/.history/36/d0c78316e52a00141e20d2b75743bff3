@@ -1,0 +1,17 @@
+package com.devdroid.testnotification;
+
+import android.content.Context;
+
+/**
+ * This is our service client,  it is the 'middle-man' between the sercie and any activity 
+ * that wants to connect to the service
+ * @author admin
+ *
+ */
+public class ScheduleClient {
+	// The hour into our service
+	private ScheduleService mBoundService;
+	
+	// The cntext to start the service in
+	private Context mContext;
+}
