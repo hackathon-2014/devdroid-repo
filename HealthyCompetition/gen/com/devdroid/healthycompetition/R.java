@@ -858,10 +858,11 @@ containing a value of this type.
         public static final int abc_split_action_bar_is_narrow=0x7f060002;
     }
     public static final class color {
-        public static final int abc_search_url_text_holo=0x7f070003;
+        public static final int abc_search_url_text_holo=0x7f070004;
         public static final int abc_search_url_text_normal=0x7f070000;
         public static final int abc_search_url_text_pressed=0x7f070002;
         public static final int abc_search_url_text_selected=0x7f070001;
+        public static final int light_red=0x7f070003;
     }
     public static final class dimen {
         /**  Default height of an action bar. 
@@ -1091,7 +1092,7 @@ containing a value of this type.
         public static final int action_menu_divider=0x7f050016;
         public static final int action_menu_presenter=0x7f050017;
         public static final int action_mode_close_button=0x7f050024;
-        public static final int action_settings=0x7f05003d;
+        public static final int action_settings=0x7f050052;
         public static final int activity_chooser_view_content=0x7f050025;
         public static final int always=0x7f05000b;
         public static final int beginning=0x7f050011;
@@ -1116,10 +1117,21 @@ containing a value of this type.
         public static final int never=0x7f050009;
         public static final int none=0x7f050010;
         public static final int normal=0x7f050000;
+        public static final int player_one_name=0x7f050040;
+        public static final int player_two_name=0x7f050041;
+        public static final int playerone_workoutfour=0x7f050050;
+        public static final int playerone_workoutone=0x7f050044;
+        public static final int playerone_workoutthree=0x7f05004c;
+        public static final int playerone_workouttwo=0x7f050048;
+        public static final int playertwo_workoutfour=0x7f050051;
+        public static final int playertwo_workoutone=0x7f050045;
+        public static final int playertwo_workoutthree=0x7f05004d;
+        public static final int playertwo_workouttwo=0x7f050049;
         public static final int progress_circular=0x7f050018;
         public static final int progress_horizontal=0x7f050019;
         public static final int radio=0x7f05002f;
         public static final int randomName=0x7f05003c;
+        public static final int relative_layout_versus=0x7f05003d;
         public static final int search_badge=0x7f050032;
         public static final int search_bar=0x7f050031;
         public static final int search_button=0x7f050033;
@@ -1137,11 +1149,21 @@ containing a value of this type.
         public static final int split_action_bar=0x7f05001e;
         public static final int submit_area=0x7f050039;
         public static final int tabMode=0x7f050002;
+        public static final int time_view=0x7f05003f;
         public static final int title=0x7f05002b;
         public static final int top_action_bar=0x7f050020;
         public static final int up=0x7f050021;
         public static final int useLogo=0x7f050003;
+        public static final int versus_image=0x7f05003e;
         public static final int withText=0x7f05000c;
+        public static final int workout_four=0x7f05004f;
+        public static final int workout_layout_four=0x7f05004e;
+        public static final int workout_layout_one=0x7f050042;
+        public static final int workout_layout_three=0x7f05004a;
+        public static final int workout_layout_two=0x7f050046;
+        public static final int workout_one=0x7f050043;
+        public static final int workout_three=0x7f05004b;
+        public static final int workout_two=0x7f050047;
     }
     public static final class integer {
         /**  The maximum number of action buttons that should be permitted within
@@ -1194,7 +1216,8 @@ containing a value of this type.
         public static final int abc_search_view=0x7f030016;
         public static final int abc_simple_decor=0x7f030017;
         public static final int activity_registration=0x7f030018;
-        public static final int support_simple_spinner_dropdown_item=0x7f030019;
+        public static final int battlefield_layout=0x7f030019;
+        public static final int support_simple_spinner_dropdown_item=0x7f03001a;
     }
     public static final class menu {
         public static final int registration=0x7f0c0000;
