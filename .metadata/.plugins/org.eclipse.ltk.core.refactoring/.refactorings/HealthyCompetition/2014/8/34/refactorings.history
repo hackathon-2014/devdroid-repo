@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;HealthyCompetition/res/drawable-mdpi/vs-banner.png&apos; to &apos;vs_banner.png&apos;" description="Rename resource &apos;vs-banner.png&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="res/drawable-mdpi/vs-banner.png" name="vs_banner.png" stamp="1408821275158" updateReferences="true"/>
+</session>

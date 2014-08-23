@@ -1,0 +1,57 @@
+package com.devdroid.healthycompetition;
+
+import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.TextView;
+
+public class BattleFieldActivity extends ActionBarActivity {
+	
+	
+	private String mPlayer1;
+	private String mPlayer2;
+	
+	private TextView mCountDownTimer;
+	
+	private RelativeLayout mWorkoutLayout1;
+	private RelativeLayout mWorkoutLayout2;
+	private RelativeLayout mWorkoutLayout3;
+	private RelativeLayout mWorkoutLayout4;
+	
+	
+	 @Override
+	    protected void onCreate(Bundle savedInstanceState) {
+	        super.onCreate(savedInstanceState);
+	        setContentView(R.layout.activity_registration);
+	        
+	        // Get player 1 and 2 names
+	        
+	        // Get text for CountDown Timer	        
+	        // Get all Workout Layouts for animations
+	        // Get text for WorkoutField
+	        // Get text for Points to Workout
+	        
+	    }
+
+
+	    @Override
+	    public boolean onCreateOptionsMenu(Menu menu) {
+	        // Inflate the menu; this adds items to the action bar if it is present.
+	        getMenuInflater().inflate(R.menu.registration, menu);
+	        return true;
+	    }
+
+	    @Override
+	    public boolean onOptionsItemSelected(MenuItem item) {
+	        // Handle action bar item clicks here. The action bar will
+	        // automatically handle clicks on the Home/Up button, so long
+	        // as you specify a parent activity in AndroidManifest.xml.
+	        int id = item.getItemId();
+	        if (id == R.id.action_settings) {
+	            return true;
+	        }
+	        return super.onOptionsItemSelected(item);
+	    }
+
+}
