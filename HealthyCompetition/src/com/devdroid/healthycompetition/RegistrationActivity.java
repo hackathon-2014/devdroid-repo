@@ -1,9 +1,11 @@
 package com.devdroid.healthycompetition;
 
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 
 public class RegistrationActivity extends ActionBarActivity {
@@ -12,6 +14,13 @@ public class RegistrationActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
+        
+     
+        // Tested Random Generator
+//        for(int i = 0; i < 100; i++){
+//        	fullName = randomName.getFullName();
+//        	Log.d("RegistrationActivity", fullName);
+//        }
     }
 
 

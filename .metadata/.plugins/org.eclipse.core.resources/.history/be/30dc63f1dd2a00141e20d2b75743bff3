@@ -1,0 +1,13 @@
+package com.devdroid.healthycompetition;
+
+public class RandomName {
+	
+	String[] firstName = new String[]{"Artie", "Rob", "Kenya", "Mathew", "Estella",
+			"Brianne", "Alphonso", "Jani", "Tandra", "Weston", "Marlin", "Malorie"};
+	
+	String[] lastName = new String[]{"Dowdell", "Pettiford", "Loesch", "Bowie",
+			"Slayden", "Blackstock", "Gresham", "Leaton", "Snavely", "Mantle", "Paterson", "Vallone"};
+	}
+	
+
+}
