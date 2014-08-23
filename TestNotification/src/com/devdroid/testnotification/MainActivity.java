@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.DatePicker;
 import android.widget.Toast;
 
@@ -33,7 +34,7 @@ public class MainActivity extends ActionBarActivity {
         scheduleClient.doBindService();
         
         // Get a reference to our date picker
-        datePicker = (DatePicker) findViewById(R.id.schedulTimePicker);
+        datePicker = (DatePicker) findViewById(R.id.scheduleTimePicker);
         
      
     }// End onCreate
@@ -52,8 +53,8 @@ public class MainActivity extends ActionBarActivity {
     	Calendar c = Calendar.getInstance();
     	c.set(year, month, day);
     	// This will be set with a time picker
-    	c.set(Calendar.HOUR_OF_DAY, 0);
-    	c.set(Calendar.MINUTE, 0);
+    	c.set(Calendar.HOUR_OF_DAY, 13);
+    	c.set(Calendar.MINUTE, 41);
     	c.set(Calendar.SECOND, 0);
     	// Ask our service to set an alarm for that date, this activity talks to the client that talks to the service
     	scheduleClient.setAlarmForNotification(c);

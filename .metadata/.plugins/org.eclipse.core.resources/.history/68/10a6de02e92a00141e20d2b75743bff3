@@ -1,0 +1,38 @@
+package com.devdroid.testnotification;
+
+import java.util.Calendar;
+
+import android.app.AlarmManager;
+import android.content.Context;
+
+/**
+ * Set an alarm for the date passed into the constructor
+ * When the alarm is raised it will start the NotifyService
+ * 
+ * This uses the android build in alarm manager *NOTE* if the phone is turned off this alarm will be cancelled
+ * 
+ * This will run on it's own thread
+ * @author admin
+ *
+ */
+
+public class AlarmTask implements Runnable {
+	// The date selected for the alarm
+	private final Calendar date;
+	// The android system alarm amanger
+	private final AlarmManager am;
+	// Your context to retrieve the alarm manager from
+	private final Context context;
+	
+	public AlarmTasks(Context context, Calendar date){
+		this.context = context;
+		this.am = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+	}
+
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+
+	}
+
+}

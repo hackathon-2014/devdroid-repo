@@ -1,0 +1,94 @@
+package com.devdroid.testnotification;
+
+import java.util.Calendar;
+
+import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.DatePicker;
+import android.widget.Toast;
+
+/**
+ * User will select a date,
+ * we then set a notification for that date to apear in the status bar
+ * @author admin
+ *
+ */
+public class MainActivity extends ActionBarActivity {
+	
+	// This is a handle so that we can call methods on our service
+    private ScheduleClient scheduleClient;
+    
+    // This is the date picker used to select the date for our notification
+    private DatePicker datePicker;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        
+        // Create a new service client and bind our activity to this service
+        scheduleClient = new ScheduleClient(this);
+        scheduleClient.doBindService();
+        
+        // Get a reference to our date picker
+        datePicker = (DatePicker) findViewById(R.id.schedulTimePicker);
+        
+     
+    }// End onCreate
+    
+    /**
+     * This is the onClick called from the XML to set a new notification
+     */
+    public void onDateSelectedButtonClick(View v){
+    	// Get the date from our datePicker
+    	int day = datePicker.getDayOfMonth();
+    	int month = datePicker.getMonth();
+    	int year = datePicker.getYear();
+    	
+    	// Create a new calendar set to the date chosen
+    	// we set the time to midnight (i.e. the first minute of the day)
+    	Calendar c = Calendar.getInstance();
+    	c.set(year, month, day);
+    	// This will be set with a time picker
+    	c.set(Calendar.HOUR_OF_DAY, 0);
+    	c.set(Calendar.MINUTE, 0);
+    	c.set(Calendar.SECOND, 0);
+    	// Ask our service to set an alarm for that date, this activity talks to the client that talks to the service
+    	scheduleClient.setAlarmForNotification(c);
+    	// Notify the user what they just did
+    	Toast.makeText(this, "Notification set for: " + day + "/" + (month+1) + "/" + year,
+    			Toast.LENGTH_SHORT).show();
+    }// end onDateSelectedButton
+    
+    @Override
+    protected void onStop(){
+    	// When our activity is stopped ensure we also stop the connection to the service
+    	// this stops us leaking our activity into the system
+    	if(scheduleClient != null){
+    		scheduleClient.doUnbindService();
+    	}
+    	super.onStop();
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+        if (id == R.id.action_settings) {
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+}
