@@ -50,7 +50,7 @@ public class BattleFieldActivity extends ActionBarActivity {
 		// Get text for CountDown Timer	
 		mCountDownTimer = (TextView) findViewById(R.id.time_view);
 
-		// Get all Workout Layouts for animations, and bring layouts to front
+		// Get all Workout Layouts for animations
 		mWorkoutLayout1 = (RelativeLayout) findViewById(R.id.workout_layout_one);
 		mWorkoutLayout1.bringToFront();
 		mWorkoutLayout2 = (RelativeLayout) findViewById(R.id.workout_layout_two);
