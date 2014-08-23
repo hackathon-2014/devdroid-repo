@@ -22,11 +22,6 @@ public class BattleFieldActivity extends ActionBarActivity {
 	private RelativeLayout mWorkoutLayout4;
 	
 	// Clickable Layouts
-	private RelativeLayout mWorkoutLayoutClick1;
-	private RelativeLayout mWorkoutLayoutClick2;
-	private RelativeLayout mWorkoutLayoutClick3;
-	private RelativeLayout mWorkoutLayoutClick4;
-	
 
 	private TextView mWorkout1;
 	private TextView mWorkout2;
@@ -58,7 +53,7 @@ public class BattleFieldActivity extends ActionBarActivity {
 		// Get text for CountDown Timer	
 		mCountDownTimer = (TextView) findViewById(R.id.time_view);
 
-		// Get all Workout Layouts for animations
+		// Get all Workout Layouts for animations, and bring layouts to front
 		mWorkoutLayout1 = (RelativeLayout) findViewById(R.id.workout_layout_one);
 		mWorkoutLayout1.bringToFront();
 		mWorkoutLayout2 = (RelativeLayout) findViewById(R.id.workout_layout_two);
@@ -67,9 +62,6 @@ public class BattleFieldActivity extends ActionBarActivity {
 		mWorkoutLayout1.bringToFront();
 		mWorkoutLayout4 = (RelativeLayout) findViewById(R.id.workout_layout_four);
 		mWorkoutLayout1.bringToFront();
-		
-		// Get all Workout Layouts for Clicking
-		mWorkoutLayoutClick1 = (RelativeLayout) findViewById(R.id.workoutone_click);
 
 		// Get text for WorkoutField
 		mWorkout1 = (TextView) findViewById(R.id.workout_one);

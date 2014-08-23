@@ -69,7 +69,7 @@ public class BattleFieldActivity extends ActionBarActivity {
 		mWorkoutLayout1.bringToFront();
 		
 		// Get all Workout Layouts for Clicking
-		mWorkoutLayoutClick1 = (RelativeLayout) findViewById(R.id.workoutone_click);
+		mWorkoutLayoutClick1 = (RelativeLayout) findViewById(R.id.workoutone)
 
 		// Get text for WorkoutField
 		mWorkout1 = (TextView) findViewById(R.id.workout_one);
