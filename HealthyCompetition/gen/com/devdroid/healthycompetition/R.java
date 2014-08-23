@@ -15,7 +15,12 @@ public final class R {
         public static final int abc_slide_in_top=0x7f040003;
         public static final int abc_slide_out_bottom=0x7f040004;
         public static final int abc_slide_out_top=0x7f040005;
-        public static final int fade_out=0x7f040006;
+        public static final int appear=0x7f040006;
+        public static final int disappear=0x7f040007;
+        public static final int fade_out=0x7f040008;
+    }
+    public static final class array {
+        public static final int fitness_level_spinner_array=0x7f0c0000;
     }
     public static final class attr {
         /**  Custom divider drawable to use for elements in the action bar. 
@@ -859,11 +864,25 @@ containing a value of this type.
         public static final int abc_split_action_bar_is_narrow=0x7f060002;
     }
     public static final class color {
-        public static final int abc_search_url_text_holo=0x7f070004;
+        public static final int abc_search_url_text_holo=0x7f070012;
         public static final int abc_search_url_text_normal=0x7f070000;
         public static final int abc_search_url_text_pressed=0x7f070002;
         public static final int abc_search_url_text_selected=0x7f070001;
+        public static final int black=0x7f070004;
+        public static final int blue=0x7f07000e;
+        public static final int clear=0x7f070010;
+        public static final int clear_gray=0x7f070011;
+        public static final int dark_blue=0x7f07000a;
+        public static final int dark_gray=0x7f070008;
+        public static final int gray=0x7f07000d;
+        public static final int green=0x7f070005;
+        public static final int light_black=0x7f070007;
         public static final int light_red=0x7f070003;
+        public static final int med_blue=0x7f07000b;
+        public static final int orange=0x7f070009;
+        public static final int red=0x7f07000f;
+        public static final int silver=0x7f07000c;
+        public static final int white=0x7f070006;
     }
     public static final class dimen {
         /**  Default height of an action bar. 
@@ -1092,14 +1111,21 @@ containing a value of this type.
         public static final int button_red_small_selected=0x7f020061;
         public static final int clockbg=0x7f020062;
         public static final int clockbg_9=0x7f020063;
-        public static final int female_button=0x7f020064;
-        public static final int female_button_inactive=0x7f020065;
-        public static final int ic_launcher=0x7f020066;
-        public static final int male_button=0x7f020067;
-        public static final int male_button_inactive=0x7f020068;
-        public static final int pop_up_background=0x7f020069;
-        public static final int versus_banner_9=0x7f02006a;
-        public static final int vs_banner=0x7f02006b;
+        public static final int cloclbg=0x7f020064;
+        public static final int devdroid_splash=0x7f020065;
+        public static final int female_button=0x7f020066;
+        public static final int female_button_inactive=0x7f020067;
+        public static final int female_button_inactive9=0x7f020068;
+        public static final int hc_splash=0x7f020069;
+        public static final int ic_launcher=0x7f02006a;
+        public static final int launch_icon=0x7f02006b;
+        public static final int male_button=0x7f02006c;
+        public static final int male_button_inactive=0x7f02006d;
+        public static final int male_button_inactive9=0x7f02006e;
+        public static final int pop_up_background=0x7f02006f;
+        public static final int popupbackground=0x7f020070;
+        public static final int versus_banner_9=0x7f020071;
+        public static final int vs_banner=0x7f020072;
     }
     public static final class id {
         public static final int action_bar=0x7f05001c;
@@ -1113,8 +1139,10 @@ containing a value of this type.
         public static final int action_menu_divider=0x7f050016;
         public static final int action_menu_presenter=0x7f050017;
         public static final int action_mode_close_button=0x7f050024;
-        public static final int action_settings=0x7f050053;
+        public static final int action_settings=0x7f050062;
         public static final int activity_chooser_view_content=0x7f050025;
+        public static final int age_strip=0x7f050058;
+        public static final int age_title=0x7f050057;
         public static final int always=0x7f05000b;
         public static final int beginning=0x7f050011;
         public static final int checkbox=0x7f05002d;
@@ -1127,6 +1155,12 @@ containing a value of this type.
         public static final int end=0x7f050013;
         public static final int expand_activities_button=0x7f050026;
         public static final int expanded_menu=0x7f05002c;
+        public static final int female_button=0x7f050056;
+        public static final int finalize_profile=0x7f05005f;
+        public static final int fitnessLevelLayout=0x7f05005c;
+        public static final int fitnessSpinner=0x7f05005e;
+        public static final int fitness_level=0x7f05005d;
+        public static final int high_age_button=0x7f05005b;
         public static final int home=0x7f050014;
         public static final int homeAsUp=0x7f050005;
         public static final int icon=0x7f05002a;
@@ -1134,6 +1168,9 @@ containing a value of this type.
         public static final int image=0x7f050027;
         public static final int listMode=0x7f050001;
         public static final int list_item=0x7f050029;
+        public static final int low_age_button=0x7f050059;
+        public static final int male_button=0x7f050055;
+        public static final int mid_age_button=0x7f05005a;
         public static final int middle=0x7f050012;
         public static final int never=0x7f050009;
         public static final int none=0x7f050010;
@@ -1161,10 +1198,14 @@ containing a value of this type.
         public static final int search_plate=0x7f050036;
         public static final int search_src_text=0x7f050037;
         public static final int search_voice_btn=0x7f05003b;
+        public static final int sex_strip=0x7f050054;
+        public static final int sex_title=0x7f050053;
         public static final int shortcut=0x7f05002e;
         public static final int showCustom=0x7f050007;
         public static final int showHome=0x7f050004;
         public static final int showTitle=0x7f050006;
+        public static final int splash=0x7f050060;
+        public static final int splash_screen=0x7f050061;
         public static final int split_action_bar=0x7f05001e;
         public static final int start_battle_button=0x7f050052;
         public static final int submit_area=0x7f050039;
@@ -1239,10 +1280,14 @@ containing a value of this type.
         public static final int abc_simple_decor=0x7f030017;
         public static final int activity_registration=0x7f030018;
         public static final int battlefield_layout=0x7f030019;
-        public static final int support_simple_spinner_dropdown_item=0x7f03001a;
+        public static final int my_spinner_textview=0x7f03001a;
+        public static final int profile=0x7f03001b;
+        public static final int splash_screen=0x7f03001c;
+        public static final int support_simple_spinner_dropdown_item=0x7f03001d;
     }
     public static final class menu {
-        public static final int registration=0x7f0c0000;
+        public static final int profile=0x7f0d0000;
+        public static final int registration=0x7f0d0001;
     }
     public static final class string {
         /**  Content description for the action bar "home" affordance. [CHAR LIMIT=NONE] 
@@ -1290,6 +1335,8 @@ containing a value of this type.
         public static final int hello_world=0x7f0a000e;
     }
     public static final class style {
+        public static final int Animations=0x7f0b008e;
+        public static final int Animations_SplashScreen=0x7f0b008f;
         /** 
         Base application theme, dependent on API level. This theme is replaced
         by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
@@ -1424,6 +1471,7 @@ containing a value of this type.
         /**  Base platform-dependent theme providing a light-themed activity. 
          */
         public static final int Theme_Base_Light=0x7f0b007f;
+        public static final int Theme_Transparent=0x7f0b008d;
         /**  Styles in here can be extended for customisation in your application. Each utilises
          one of the Base styles. If Holo themes are available on the current platform version
          they will be used instead of the compat styles. 

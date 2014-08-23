@@ -4,5 +4,11 @@
     <string name="app_name">Healthy Competition</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    
+    <string-array name="fitness_level_spinner_array">
+        <item>- Out of Shape -</item>
+        <item>- Average Shape -</item>
+        <item>- In Shape -</item>
+    </string-array>
 
 </resources>

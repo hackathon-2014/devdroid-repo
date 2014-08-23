@@ -1,8 +1,12 @@
 package com.devdroid.healthycompetition;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.v7.app.ActionBarActivity;
+import android.text.InputType;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -11,6 +15,7 @@ import android.view.animation.Animation.AnimationListener;
 import android.view.animation.AnimationUtils;
 import android.view.animation.TranslateAnimation;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -45,15 +50,16 @@ public class BattleFieldActivity extends ActionBarActivity implements AnimationL
 	private TextView mP2W2;
 	private TextView mP1W3;
 	private TextView mP2W3;
-	
+
 	// Animation fade out
 	Animation animFadeOut;
+	Animation animAppear;
 
 	// Flag to check which Layout was faded out
 	private Boolean mLayoutGone1 = false;
 	private Boolean mLayoutGone2 = false;
 	private Boolean mLayoutGone3 = false;
-	
+
 	// Start Button hidden first
 	private Button mStartButton;
 
@@ -62,12 +68,14 @@ public class BattleFieldActivity extends ActionBarActivity implements AnimationL
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.battlefield_layout);
-		
+
 		// Load animation
 		animFadeOut = AnimationUtils.loadAnimation(getApplicationContext(),
-                R.anim.fade_out);
+				R.anim.fade_out);
+		animAppear = AnimationUtils.loadAnimation(getApplicationContext(),
+				R.anim.appear);
 		// Set animation listener
-		animFadeOut.setAnimationListener(this);
+		animAppear.setAnimationListener(this);
 
 		// Get player 1 and 2 names
 		mPlayer1 = (TextView) findViewById(R.id.player_one_name);
@@ -98,7 +106,8 @@ public class BattleFieldActivity extends ActionBarActivity implements AnimationL
 				mLayoutGone2 = true;
 				mWorkoutLayout3.startAnimation(animFadeOut);
 				mLayoutGone3 = true;
-				
+				mStartButton.setVisibility(View.VISIBLE);
+
 
 			}
 		});
@@ -139,7 +148,7 @@ public class BattleFieldActivity extends ActionBarActivity implements AnimationL
 				mLayoutGone2 = true;
 				//mWorkoutLayout1.setVisibility(View.GONE);
 				//mWorkoutLayout2.setVisibility(View.GONE);
-				
+
 			}
 		});
 
@@ -164,44 +173,88 @@ public class BattleFieldActivity extends ActionBarActivity implements AnimationL
 
 		// Start Epic Battle!
 		mStartButton = (Button) findViewById(R.id.start_battle_button);
+		mStartButton.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// Set CountDown and popUp Dialog
+				new CountDownTimer(5000, 1000) {
+
+					public void onTick(long millisUntilFinished) {
+						mCountDownTimer.setText(String.valueOf(millisUntilFinished / 1000));
+					}
+
+					public void onFinish() {
+						mCountDownTimer.setText(String.valueOf(0));
+
+						AlertDialog.Builder alert = new AlertDialog.Builder(BattleFieldActivity.this);
+
+						alert.setTitle("Repitition");
+						alert.setMessage("Enter your number of Reptitions");
+
+						// Set an EditText view to get user input
+						final EditText input = new EditText(BattleFieldActivity.this);
+						// Only numbers for input
+						input.setInputType(InputType.TYPE_CLASS_NUMBER);
+						alert.setView(input);
+
+						alert.setNeutralButton("Done!", new DialogInterface.OnClickListener() {
+
+							@Override
+							public void onClick(DialogInterface dialog, int which) {
+								// Do something with values
+								// Save answer to private variable
+								// Set Timer text to time
+								mCountDownTimer.setText("Time");
+
+								// Which ever Layout is not Gone == false. Add value.. to player 1
+
+							}
+						});
+
+						alert.show();
+					}
+				}.start();
+			}
+		});
 	}
-	
+
 	public void SlideToDown(final RelativeLayout rL) {
-	    Animation slide = null;
-	    slide = new TranslateAnimation(Animation.RELATIVE_TO_SELF, 0.0f,
-	            Animation.RELATIVE_TO_SELF, 0.0f, Animation.RELATIVE_TO_SELF,
-	            0.0f, Animation.RELATIVE_TO_SELF, 5.2f);
+		Animation slide = null;
+		slide = new TranslateAnimation(Animation.RELATIVE_TO_SELF, 0.0f,
+				Animation.RELATIVE_TO_SELF, 0.0f, Animation.RELATIVE_TO_SELF,
+				0.0f, Animation.RELATIVE_TO_SELF, 5.2f);
 
-	    slide.setDuration(400);
-	    slide.setFillAfter(true);
-	    slide.setFillEnabled(true);
-	    rL.startAnimation(slide);
+		slide.setDuration(400);
+		slide.setFillAfter(true);
+		slide.setFillEnabled(true);
+		rL.startAnimation(slide);
 
-	    slide.setAnimationListener(new AnimationListener() {
+		slide.setAnimationListener(new AnimationListener() {
 
-	        @Override
-	        public void onAnimationStart(Animation animation) {
+			@Override
+			public void onAnimationStart(Animation animation) {
 
-	        }
+			}
 
-	        @Override
-	        public void onAnimationRepeat(Animation animation) {
-	        }
+			@Override
+			public void onAnimationRepeat(Animation animation) {
+			}
 
-	        @Override
-	        public void onAnimationEnd(Animation animation) {
+			@Override
+			public void onAnimationEnd(Animation animation) {
 
-	            rL.clearAnimation();
+				rL.clearAnimation();
 
-	            RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(
-	                    rL.getWidth(), rL.getHeight());
-	            lp.setMargins(0, rL.getWidth(), 0, 0);
-	            lp.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
-	            rL.setLayoutParams(lp);
+				RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(
+						rL.getWidth(), rL.getHeight());
+				lp.setMargins(0, rL.getWidth(), 0, 0);
+				lp.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
+				rL.setLayoutParams(lp);
 
-	        }
+			}
 
-	    });
+		});
 
 	}
 
@@ -228,32 +281,32 @@ public class BattleFieldActivity extends ActionBarActivity implements AnimationL
 	@Override
 	public void onAnimationStart(Animation animation) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void onAnimationEnd(Animation animation) {
 		// Take any action after completing the animation
 
-				// check for fade out animation
-				if (animation == animFadeOut) {
-					Toast.makeText(getApplicationContext(), "Animation Stopped",
-							Toast.LENGTH_SHORT).show();
-					if(mLayoutGone1 == true){
-						mWorkoutLayout1.setVisibility(View.GONE);
-					}else if(mLayoutGone2 == true){
-						mWorkoutLayout2.setVisibility(View.GONE);
-					}else if(mLayoutGone3 == true){
-						mWorkoutLayout3.setVisibility(View.GONE);
-					}
-					
-				}
+		// check for fade out animation
+		if (animation == animFadeOut) {
+			Toast.makeText(getApplicationContext(), "Animation Stopped",
+					Toast.LENGTH_SHORT).show();
+			if(mLayoutGone1 == true){
+				mWorkoutLayout1.setVisibility(View.GONE);
+			}else if(mLayoutGone2 == true){
+				mWorkoutLayout2.setVisibility(View.GONE);
+			}else if(mLayoutGone3 == true){
+				mWorkoutLayout3.setVisibility(View.GONE);
+			}
+
+		}
 	}
 
 	@Override
 	public void onAnimationRepeat(Animation animation) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

@@ -1,0 +1,28 @@
+package com.devdroid.healthycompetition;
+
+import android.app.Activity;
+
+public class Splash extends Activity {
+
+	@Override
+	public void onCreate(Bundle icicle) {
+		super.onCreate(icicle);
+		LayoutInflater inflater = getLayoutInflater();
+		View layout = inflater.inflate(R.layout.splash_screen,
+				(ViewGroup) findViewById(R.id.splash));
+
+		final Toast toast = new Toast(getApplicationContext());
+		toast.setGravity(Gravity.CENTER_VERTICAL, 1, 1);
+		toast.setView(layout);
+		toast.show();
+
+		new Handler().post(new Runnable() {
+			@Override
+			public void run() {
+				Splash.this.startActivity(new Intent(Splash.this,
+						Profile.class));
+				Splash.this.finish();
+			}
+		});
+	}
+}
