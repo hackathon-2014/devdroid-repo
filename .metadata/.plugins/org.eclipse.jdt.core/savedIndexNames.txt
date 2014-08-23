@@ -1,0 +1,3 @@
+INDEX VERSION 1.126+/Volumes/TBytes/Github/devdroid-repo/.metadata/.plugins/org.eclipse.jdt.core
+1992816110.index
+1270315800.index
