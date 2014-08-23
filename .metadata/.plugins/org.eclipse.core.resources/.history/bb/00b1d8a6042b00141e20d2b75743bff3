@@ -43,17 +43,16 @@
             android:layout_below="@+id/player_two_name"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
-            android:background="@drawable/clockbg_9" />
+            android:background="@drawable/clockBG_9" />
 
         <TextView
             android:id="@+id/time_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/versus_image"
+            android:layout_alignBottom="@+id/versus_image"
             android:layout_centerHorizontal="true"
             android:text="Time"
             android:textSize="20dp" />
-
     </RelativeLayout>
 
     <RelativeLayout
