@@ -34,6 +34,8 @@ public class BattleFieldActivity extends ActionBarActivity {
 	private TextView mP2W3;
 	private TextView mP1W4;
 	private TextView mP2W4;
+	
+	// Start Button hidden first
 
 	
 	 @Override
@@ -43,12 +45,37 @@ public class BattleFieldActivity extends ActionBarActivity {
 	        
 	        // Get player 1 and 2 names
 	        mPlayer1 = (TextView) findViewById(R.id.player_one_name);
+	        mPlayer2 = (TextView) findViewById(R.id.player_two_name);
 	        
+	        // Get text for CountDown Timer	
+	        mCountDownTimer = (TextView) findViewById(R.id.time_view);
 	        
-	        // Get text for CountDown Timer	        
 	        // Get all Workout Layouts for animations
+	        mWorkoutLayout1 = (RelativeLayout) findViewById(R.id.workout_layout_one);
+	        mWorkoutLayout2 = (RelativeLayout) findViewById(R.id.workout_layout_two);
+	        mWorkoutLayout3 = (RelativeLayout) findViewById(R.id.workout_layout_three);
+	        mWorkoutLayout4 = (RelativeLayout) findViewById(R.id.workout_layout_four);
+	        
 	        // Get text for WorkoutField
+	        mWorkout1 = (TextView) findViewById(R.id.workout_one);
+	        mWorkout2 = (TextView) findViewById(R.id.workout_two);
+	        mWorkout3 = (TextView) findViewById(R.id.workout_three);
+	        mWorkout4 = (TextView) findViewById(R.id.workout_four);
+	        
+	        
 	        // Get text for Points to Workout
+	        mP1W1 = (TextView) findViewById(R.id.playerone_workoutone);
+	        mP2W1 = (TextView) findViewById(R.id.playertwo_workoutone);
+	        
+	        mP1W2 = (TextView) findViewById(R.id.playerone_workouttwo);
+	        mP2W2 = (TextView) findViewById(R.id.playertwo_workouttwo);
+	        
+	        mP1W3 = (TextView) findViewById(R.id.playerone_workoutthree);
+	        mP2W3 = (TextView) findViewById(R.id.playertwo_workoutthree);
+	        
+	        mP1W4 = (TextView) findViewById(R.id.playerone_workoutfour);
+	        mP2W4 = (TextView) findViewById(R.id.playertwo_workoutfour);
+	        
 	        
 	    }
 
