@@ -1,0 +1,7 @@
+package com.devdroid.healthycompetition;
+
+import android.support.v7.app.ActionBarActivity;
+
+public class Challenge extends ActionBarActivity {
+
+}

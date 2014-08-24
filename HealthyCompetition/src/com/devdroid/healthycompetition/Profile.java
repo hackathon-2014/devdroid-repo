@@ -139,8 +139,8 @@ public class Profile extends ActionBarActivity {
 
 
 				}
-				Intent toBattle = new Intent(Profile.this, BattleFieldActivity.class);
-				startActivity(toBattle);
+				Intent toChallenge = new Intent(Profile.this, Challenge.class);
+				startActivity(toChallenge);
 			}
 		});
 

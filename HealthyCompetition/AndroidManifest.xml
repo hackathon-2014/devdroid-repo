@@ -15,7 +15,8 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name=".Profile"
-            android:label="@string/app_name" >
+            android:label="@string/app_name" 
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,7 +25,8 @@
         </activity>
         <activity
             android:name="Splash"
-            android:theme="@style/Theme.Transparent" >
+            android:theme="@style/Theme.Transparent" 
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" >
                 </action>
@@ -33,11 +35,15 @@
                 </category>
             </intent-filter>
         </activity>
-        <activity android:name=".BattleFieldActivity" >
+        <activity android:name=".BattleFieldActivity"
+            android:screenOrientation="portrait" >
 >
         </activity>
-        <activity android:name=".ScheduleNotification" >
+        <activity android:name=".ScheduleNotification" 
+            android:screenOrientation="portrait">
         </activity>
+        <activity android:name=".Challenge"
+            android:screenOrientation="portrait"></activity>
 
         <service android:name=".ScheduleService" />
         <service android:name=".NotifyService" />

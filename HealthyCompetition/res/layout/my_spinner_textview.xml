@@ -7,7 +7,9 @@
     android:gravity="center"
     android:paddingBottom="6sp"
     android:paddingTop="6sp"
+    android:background="#1A6FA4"
     android:singleLine="true"
     android:text="- Please Select One -"
+    android:textColor = "@color/white"
     android:textSize="21sp"
     android:typeface="normal" />

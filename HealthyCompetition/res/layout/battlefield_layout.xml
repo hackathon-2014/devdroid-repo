@@ -13,7 +13,7 @@
             android:id="@+id/versus_image"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/versus_banner_9" />
+            android:background="@drawable/vs_banner" />
 
         <TextView
             android:id="@+id/player_one_name"
@@ -43,7 +43,7 @@
             android:layout_below="@+id/player_two_name"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
-            android:background="@drawable/clockbg_9" />
+            android:background="@drawable/clockbg" />
 
         <TextView
             android:id="@+id/time_view"

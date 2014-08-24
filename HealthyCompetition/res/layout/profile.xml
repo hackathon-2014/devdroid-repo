@@ -32,14 +32,14 @@
             android:layout_width="wrap_content"
             android:layout_height="75dp"
             android:layout_weight="1"
-            android:background="@drawable/male_button_inactive9" />
+            android:background="@drawable/male_button" />
 
         <ImageButton
             android:id="@+id/female_button"
             android:layout_width="wrap_content"
             android:layout_height="75dp"
             android:layout_weight="1" 
-            android:background="@drawable/female_button_inactive9" />
+            android:background="@drawable/female_button" />
     </LinearLayout>
 
     <TextView
@@ -59,25 +59,33 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/age_title"
-        android:orientation="horizontal" >
+        android:orientation="horizontal"
+         >
 
         <ImageButton
             android:id="@+id/low_age_button"
             android:layout_width="wrap_content"
             android:layout_height="75dp"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:layout_marginRight="40dp"
+            android:background="@drawable/under35selected" />
 
         <ImageButton
             android:id="@+id/mid_age_button"
             android:layout_width="wrap_content"
             android:layout_height="75dp"
-            android:layout_weight="1" />
+            android:layout_weight="1" 
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:background="@drawable/to55selected"/>
 
         <ImageButton
             android:id="@+id/high_age_button"
             android:layout_width="wrap_content"
             android:layout_height="75dp"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:layout_marginLeft="40dp"
+            android:background="@drawable/over55selected" />
     </LinearLayout>
 
    <LinearLayout
@@ -119,7 +127,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:text="Get Started"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
+        android:background="#1A6FA4"
+        
         android:textSize="24sp" />
 
 </RelativeLayout>

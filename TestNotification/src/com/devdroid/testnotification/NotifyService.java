@@ -77,7 +77,7 @@ public class NotifyService extends Service {
         Notification notification = new Notification(icon, text, time);
  
         // The PendingIntent to launch our activity if the user selects this notification
-        PendingIntent contentIntent = PendingIntent.getActivity(this, 0, new Intent(this, SecondActivity.class), 0);
+        PendingIntent contentIntent = PendingIntent.getActivity(this, 0, new Intent(this, Challenge.class), 0);
  
         // Set the info for the views that show in the notification panel.
         notification.setLatestEventInfo(this, title, text, contentIntent);

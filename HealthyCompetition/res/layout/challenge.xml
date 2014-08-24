@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/social_parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/clear_gray"
+    android:orientation="vertical" >
+
+    <FrameLayout
+        android:id="@+id/fitnessLevelLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="28dp"
+        android:layout_marginLeft="14dp"
+        android:layout_marginRight="14dp"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/challenge_background" >
+
+        <TextView
+            android:id="@+id/challenger"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="28dp"
+            android:layout_marginLeft="14dp"
+            android:layout_marginRight="14dp"
+            android:layout_marginTop="120dp"
+            android:text="Challenger"
+            android:textColor="@color/black"
+            android:textSize="21sp" />
+        
+        <ImageButton
+            android:id="@+id/accept_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="28dp"
+            android:layout_marginLeft="14dp"
+            android:layout_marginRight="14dp"
+            android:layout_marginTop="320dp"
+            android:background="@drawable/challenge_accepted_button" />
+    </FrameLayout>
+
+</RelativeLayout>

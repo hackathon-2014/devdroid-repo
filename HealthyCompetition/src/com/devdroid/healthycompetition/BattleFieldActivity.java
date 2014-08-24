@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v7.app.ActionBarActivity;
 import android.text.InputType;
-import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -162,13 +161,13 @@ public class BattleFieldActivity extends ActionBarActivity implements AnimationL
 					isBurpees = false;
 					switch(counterWorkout){
 					case 0:
-						mWorkout1.setBackgroundResource(R.drawable.burpess_text);
+						mWorkout1.setBackgroundResource(R.drawable.burpees_text);
 						break;
 					case 1:
-						mWorkout2.setBackgroundResource(R.drawable.burpess_text);
+						mWorkout2.setBackgroundResource(R.drawable.burpees_text);
 						break;
 					case 2:
-						mWorkout3.setBackgroundResource(R.drawable.burpess_text);
+						mWorkout3.setBackgroundResource(R.drawable.burpees_text);
 					}
 					counterWorkout++;
 
@@ -212,8 +211,11 @@ public class BattleFieldActivity extends ActionBarActivity implements AnimationL
 
 		// Get player 1 and 2 names
 		mPlayer1 = (TextView) findViewById(R.id.player_one_name);
+		mPlayer1.setText("You");
 		mPlayer2 = (TextView) findViewById(R.id.player_two_name);
-
+		RandomName rName = new RandomName();
+		mPlayer2.setText("Player 2");
+		
 		// Get text for CountDown Timer	
 		mCountDownTimer = (TextView) findViewById(R.id.time_view);
 
