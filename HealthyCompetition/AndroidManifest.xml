@@ -34,7 +34,13 @@
             </intent-filter>
         </activity>
         <activity android:name=".BattleFieldActivity" >
+>
         </activity>
+        <activity android:name=".ScheduleNotification" >
+        </activity>
+
+        <service android:name=".ScheduleService" />
+        <service android:name=".NotifyService" />
     </application>
 
 </manifest>

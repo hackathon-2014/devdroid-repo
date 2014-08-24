@@ -3,10 +3,12 @@ package com.devdroid.healthycompetition;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v7.app.ActionBarActivity;
 import android.text.InputType;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,6 +18,7 @@ import android.view.animation.AnimationUtils;
 import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -39,9 +42,9 @@ public class BattleFieldActivity extends ActionBarActivity implements AnimationL
 	private RelativeLayout mWorkoutLayoutClick2;
 	private RelativeLayout mWorkoutLayoutClick3;
 
-	private TextView mWorkout1;
-	private TextView mWorkout2;
-	private TextView mWorkout3;
+	private ImageView mWorkout1;
+	private ImageView mWorkout2;
+	private ImageView mWorkout3;
 
 	// m Player ?  to Workout ?
 	private TextView mP1W1;
@@ -63,6 +66,16 @@ public class BattleFieldActivity extends ActionBarActivity implements AnimationL
 	// Start Button hidden first
 	private Button mStartButton;
 
+	private Boolean isPushUps = true;
+	private Boolean isSitUps = true;
+	private Boolean isLunges = true;
+	private Boolean isBurpees = true;
+	private Boolean isSquats = true;
+	private Boolean isMountainClimb = true;
+
+	private Boolean workoutInitializeComp = false;
+	private int counterWorkout = 0;
+
 
 	@SuppressLint("ResourceAsColor") @Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +89,126 @@ public class BattleFieldActivity extends ActionBarActivity implements AnimationL
 				R.anim.appear);
 		// Set animation listener
 		animAppear.setAnimationListener(this);
+
+		// Get image for WorkoutField
+		mWorkout1 = (ImageView) findViewById(R.id.workout_one_img);
+		mWorkout2 = (ImageView) findViewById(R.id.workout_two_img);
+		mWorkout3 = (ImageView) findViewById(R.id.workout_three_img);
+
+		// Choose 3Êrandom workout no same
+		while(counterWorkout != 3){
+			int randomInt = (int)(Math.random()*6);
+
+			switch(randomInt){
+			case 0:	// PushUps
+				if(isPushUps){
+					isPushUps = false;
+
+					switch(counterWorkout){
+					case 0:
+						mWorkout1.setBackgroundResource(R.drawable.pushups_text);
+						break;
+					case 1:
+						mWorkout2.setBackgroundResource(R.drawable.pushups_text);
+						break;
+					case 2:
+						mWorkout3.setBackgroundResource(R.drawable.pushups_text);
+					}
+
+					
+
+					counterWorkout++;
+				}
+				break;
+			case 1: // SitUps
+				if(isSitUps){
+					isSitUps = false;
+
+					switch(counterWorkout){
+					case 0:
+						mWorkout1.setBackgroundResource(R.drawable.situps_text);
+						break;
+					case 1:
+						mWorkout2.setBackgroundResource(R.drawable.situps_text);
+						break;
+					case 2:
+						mWorkout3.setBackgroundResource(R.drawable.situps_text);
+					}
+
+					counterWorkout++;
+					
+				}
+				break;
+			case 2: // Lunges
+				if(isLunges){
+					isLunges = false;
+
+					switch(counterWorkout){
+					case 0:
+						mWorkout1.setBackgroundResource(R.drawable.lunges_text);
+						break;
+					case 1:
+						mWorkout2.setBackgroundResource(R.drawable.lunges_text);
+						break;
+					case 2:
+						mWorkout3.setBackgroundResource(R.drawable.lunges_text);
+					}
+					counterWorkout++;
+					
+				}
+				break;
+			case 3: // Burpees
+				if(isBurpees){
+					isBurpees = false;
+					switch(counterWorkout){
+					case 0:
+						mWorkout1.setBackgroundResource(R.drawable.burpess_text);
+						break;
+					case 1:
+						mWorkout2.setBackgroundResource(R.drawable.burpess_text);
+						break;
+					case 2:
+						mWorkout3.setBackgroundResource(R.drawable.burpess_text);
+					}
+					counterWorkout++;
+
+				}
+				break;
+			case 4: // Squats
+				if(isSquats){
+					isSquats = false;
+					switch(counterWorkout){
+					case 0:
+						mWorkout1.setBackgroundResource(R.drawable.squats_text);
+						break;
+					case 1:
+						mWorkout2.setBackgroundResource(R.drawable.squats_text);
+						break;
+					case 2:
+						mWorkout3.setBackgroundResource(R.drawable.squats_text);
+					}
+					counterWorkout++;
+				}
+				break;
+			case 5: // Mountain Climber
+				if(isMountainClimb){
+					isMountainClimb = false;
+					switch(counterWorkout){
+					case 0:
+						mWorkout1.setBackgroundResource(R.drawable.mtclimbers_text);
+						break;
+					case 1:
+						mWorkout2.setBackgroundResource(R.drawable.mtclimbers_text);
+						break;
+					case 2:
+						mWorkout3.setBackgroundResource(R.drawable.mtclimbers_text);
+					}
+					counterWorkout++;
+				}
+
+			}
+		}
+
 
 		// Get player 1 and 2 names
 		mPlayer1 = (TextView) findViewById(R.id.player_one_name);
@@ -127,6 +260,7 @@ public class BattleFieldActivity extends ActionBarActivity implements AnimationL
 				mLayoutGone1 = true;
 				mWorkoutLayout3.startAnimation(animFadeOut);
 				mLayoutGone3 = true;
+				mStartButton.setVisibility(View.VISIBLE);
 
 			}
 		});
@@ -146,8 +280,7 @@ public class BattleFieldActivity extends ActionBarActivity implements AnimationL
 				mLayoutGone1 = true;
 				mWorkoutLayout2.startAnimation(animFadeOut);
 				mLayoutGone2 = true;
-				//mWorkoutLayout1.setVisibility(View.GONE);
-				//mWorkoutLayout2.setVisibility(View.GONE);
+				mStartButton.setVisibility(View.VISIBLE);
 
 			}
 		});
@@ -155,10 +288,7 @@ public class BattleFieldActivity extends ActionBarActivity implements AnimationL
 
 
 
-		// Get text for WorkoutField
-		mWorkout1 = (TextView) findViewById(R.id.workout_one);
-		mWorkout2 = (TextView) findViewById(R.id.workout_two);
-		mWorkout3 = (TextView) findViewById(R.id.workout_three);
+
 
 
 		// Get text for Points to Workout
@@ -208,11 +338,29 @@ public class BattleFieldActivity extends ActionBarActivity implements AnimationL
 								mCountDownTimer.setText("Time");
 
 								// Which ever Layout is not Gone == false. Add value.. to player 1
+								if(mLayoutGone1 == false){
+									mP1W1.setText(input.getText());
+			
+								}else if(mLayoutGone2 == false){
+									mP1W2.setText(input.getText());
+								}else if(mLayoutGone3 == false){
+									mLayoutGone3 = true;
+									mP1W3.setText(input.getText());
+								}
+								
+								// Intent to get date Activity
+								Intent scheduleNotification = new Intent(BattleFieldActivity.this, ScheduleNotification.class);
+								startActivity(scheduleNotification);
 
 							}
 						});
 
 						alert.show();
+						
+//						TextView titleView = (TextView) alert.findViewById(getResources().getIdentifier("alertTitle", "id", "android"));
+//						if(titleView != null){
+//							titleView.setGravity(Gravity.CENTER);
+//						}
 					}
 				}.start();
 			}

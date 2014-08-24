@@ -1,0 +1,444 @@
+package com.devdroid.healthycompetition;
+
+import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.os.Bundle;
+import android.os.CountDownTimer;
+import android.support.v7.app.ActionBarActivity;
+import android.text.InputType;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.AnimationUtils;
+import android.view.animation.TranslateAnimation;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import android.widget.Toast;
+
+public class BattleFieldActivity extends ActionBarActivity implements AnimationListener{
+
+
+	private TextView mPlayer1;
+	private TextView mPlayer2;
+
+	private TextView mCountDownTimer;
+
+	// Layouts for win/lose color
+	private RelativeLayout mWorkoutLayout1;
+	private RelativeLayout mWorkoutLayout2;
+	private RelativeLayout mWorkoutLayout3;
+
+
+	// Clickable Layouts
+	private RelativeLayout mWorkoutLayoutClick1;
+	private RelativeLayout mWorkoutLayoutClick2;
+	private RelativeLayout mWorkoutLayoutClick3;
+
+	private ImageView mWorkout1;
+	private ImageView mWorkout2;
+	private ImageView mWorkout3;
+
+	// m Player ?  to Workout ?
+	private TextView mP1W1;
+	private TextView mP2W1;
+	private TextView mP1W2;
+	private TextView mP2W2;
+	private TextView mP1W3;
+	private TextView mP2W3;
+
+	// Animation fade out
+	Animation animFadeOut;
+	Animation animAppear;
+
+	// Flag to check which Layout was faded out
+	private Boolean mLayoutGone1 = false;
+	private Boolean mLayoutGone2 = false;
+	private Boolean mLayoutGone3 = false;
+
+	// Start Button hidden first
+	private Button mStartButton;
+
+	private Boolean isPushUps = true;
+	private Boolean isSitUps = true;
+	private Boolean isLunges = true;
+	private Boolean isBurpees = true;
+	private Boolean isSquats = true;
+	private Boolean isMountainClimb = true;
+
+	private Boolean workoutInitializeComp = false;
+	private int counterWorkout = 0;
+
+
+	@SuppressLint("ResourceAsColor") @Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.battlefield_layout);
+
+		// Load animation
+		animFadeOut = AnimationUtils.loadAnimation(getApplicationContext(),
+				R.anim.fade_out);
+		animAppear = AnimationUtils.loadAnimation(getApplicationContext(),
+				R.anim.appear);
+		// Set animation listener
+		animAppear.setAnimationListener(this);
+
+		// Get image for WorkoutField
+		mWorkout1 = (ImageView) findViewById(R.id.workout_one_img);
+		mWorkout2 = (ImageView) findViewById(R.id.workout_two_img);
+		mWorkout3 = (ImageView) findViewById(R.id.workout_three_img);
+
+		// Choose 3Êrandom workout no same
+		while(counterWorkout != 3){
+			int randomInt = (int)(Math.random()*6);
+
+			switch(randomInt){
+			case 0:	// PushUps
+				if(isPushUps){
+					isPushUps = false;
+
+					switch(counterWorkout){
+					case 0:
+						mWorkout1.setBackgroundResource(R.drawable.pushups_text);
+						break;
+					case 1:
+						mWorkout2.setBackgroundResource(R.drawable.pushups_text);
+						break;
+					case 2:
+						mWorkout3.setBackgroundResource(R.drawable.pushups_text);
+					}
+
+					
+
+					counterWorkout++;
+				}
+				break;
+			case 1: // SitUps
+				if(isSitUps){
+					isSitUps = false;
+
+					switch(counterWorkout){
+					case 0:
+						mWorkout1.setBackgroundResource(R.drawable.situps_text);
+						break;
+					case 1:
+						mWorkout2.setBackgroundResource(R.drawable.situps_text);
+						break;
+					case 2:
+						mWorkout3.setBackgroundResource(R.drawable.situps_text);
+					}
+
+					counterWorkout++;
+					
+				}
+				break;
+			case 2: // Lunges
+				if(isLunges){
+					isLunges = false;
+
+					switch(counterWorkout){
+					case 0:
+						mWorkout1.setBackgroundResource(R.drawable.lunges_text);
+						break;
+					case 1:
+						mWorkout2.setBackgroundResource(R.drawable.lunges_text);
+						break;
+					case 2:
+						mWorkout3.setBackgroundResource(R.drawable.lunges_text);
+					}
+					counterWorkout++;
+					
+				}
+				break;
+			case 3: // Burpees
+				if(isBurpees){
+					isBurpees = false;
+					switch(counterWorkout){
+					case 0:
+						mWorkout1.setBackgroundResource(R.drawable.burpess_text);
+						break;
+					case 1:
+						mWorkout2.setBackgroundResource(R.drawable.burpess_text);
+						break;
+					case 2:
+						mWorkout3.setBackgroundResource(R.drawable.burpess_text);
+					}
+					counterWorkout++;
+
+				}
+				break;
+			case 4: // Squats
+				if(isSquats){
+					isSquats = false;
+					switch(counterWorkout){
+					case 0:
+						mWorkout1.setBackgroundResource(R.drawable.squats_text);
+						break;
+					case 1:
+						mWorkout2.setBackgroundResource(R.drawable.squats_text);
+						break;
+					case 2:
+						mWorkout3.setBackgroundResource(R.drawable.squats_text);
+					}
+					counterWorkout++;
+				}
+				break;
+			case 5: // Mountain Climber
+				if(isMountainClimb){
+					isMountainClimb = false;
+					switch(counterWorkout){
+					case 0:
+						mWorkout1.setBackgroundResource(R.drawable.mtclimbers_text);
+						break;
+					case 1:
+						mWorkout2.setBackgroundResource(R.drawable.mtclimbers_text);
+						break;
+					case 2:
+						mWorkout3.setBackgroundResource(R.drawable.mtclimbers_text);
+					}
+					counterWorkout++;
+				}
+
+			}
+		}
+
+
+		// Get player 1 and 2 names
+		mPlayer1 = (TextView) findViewById(R.id.player_one_name);
+		mPlayer2 = (TextView) findViewById(R.id.player_two_name);
+
+		// Get text for CountDown Timer	
+		mCountDownTimer = (TextView) findViewById(R.id.time_view);
+
+		// Get all Workout Layouts for animations
+		mWorkoutLayout1 = (RelativeLayout) findViewById(R.id.workout_layout_one);
+		//This works-> mWorkoutLayout1.setBackgroundColor(this.getResources().getColor(R.color.light_red));
+		mWorkoutLayout2 = (RelativeLayout) findViewById(R.id.workout_layout_two);
+		mWorkoutLayout3 = (RelativeLayout) findViewById(R.id.workout_layout_three);
+
+		// Get all Workout Layouts for Clicking
+		mWorkoutLayoutClick1 = (RelativeLayout) findViewById(R.id.workoutone_click);
+		mWorkoutLayoutClick1.bringToFront();
+		// If Workout1 clicked
+		mWorkoutLayoutClick1.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// Check for Validity
+
+				// Animate Workout 1
+				mLayoutGone1 = false;
+				mWorkoutLayout2.startAnimation(animFadeOut);
+				mLayoutGone2 = true;
+				mWorkoutLayout3.startAnimation(animFadeOut);
+				mLayoutGone3 = true;
+				mStartButton.setVisibility(View.VISIBLE);
+
+
+			}
+		});
+
+		mWorkoutLayoutClick2 = (RelativeLayout) findViewById(R.id.workouttwo_click);
+		mWorkoutLayoutClick2.bringToFront();
+		// If Workout2 is clicked
+		mWorkoutLayoutClick2.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// Check for Validity
+
+				// Animate Workout 2
+				mLayoutGone2 = false;
+				mWorkoutLayout1.startAnimation(animFadeOut);
+				mLayoutGone1 = true;
+				mWorkoutLayout3.startAnimation(animFadeOut);
+				mLayoutGone3 = true;
+				mStartButton.setVisibility(View.VISIBLE);
+
+			}
+		});
+
+		mWorkoutLayoutClick3 = (RelativeLayout) findViewById(R.id.workoutthree_click);
+		mWorkoutLayoutClick3.bringToFront();
+		// If Workout3 is clicked
+		mWorkoutLayoutClick3.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// Check for Validity
+
+				// Animate Workout 3	
+				mLayoutGone3 = false;
+				mWorkoutLayout1.startAnimation(animFadeOut);
+				mLayoutGone1 = true;
+				mWorkoutLayout2.startAnimation(animFadeOut);
+				mLayoutGone2 = true;
+				mStartButton.setVisibility(View.VISIBLE);
+
+			}
+		});
+
+
+
+
+
+
+
+		// Get text for Points to Workout
+		mP1W1 = (TextView) findViewById(R.id.playerone_workoutone);
+		mP2W1 = (TextView) findViewById(R.id.playertwo_workoutone);
+
+		mP1W2 = (TextView) findViewById(R.id.playerone_workouttwo);
+		mP2W2 = (TextView) findViewById(R.id.playertwo_workouttwo);
+
+		mP1W3 = (TextView) findViewById(R.id.playerone_workoutthree);
+		mP2W3 = (TextView) findViewById(R.id.playertwo_workoutthree);
+
+		// Start Epic Battle!
+		mStartButton = (Button) findViewById(R.id.start_battle_button);
+		mStartButton.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// Set CountDown and popUp Dialog
+				new CountDownTimer(5000, 1000) {
+
+					public void onTick(long millisUntilFinished) {
+						mCountDownTimer.setText(String.valueOf(millisUntilFinished / 1000));
+					}
+
+					public void onFinish() {
+						mCountDownTimer.setText(String.valueOf(0));
+
+						AlertDialog.Builder alert = new AlertDialog.Builder(BattleFieldActivity.this);
+
+						alert.setTitle("Repitition");
+						alert.setMessage("Enter your number of Reptitions");
+
+						// Set an EditText view to get user input
+						final EditText input = new EditText(BattleFieldActivity.this);
+						// Only numbers for input
+						input.setInputType(InputType.TYPE_CLASS_NUMBER);
+						alert.setView(input);
+
+						alert.setNeutralButton("Done!", new DialogInterface.OnClickListener() {
+
+							@Override
+							public void onClick(DialogInterface dialog, int which) {
+								// Do something with values
+								// Save answer to private variable
+								// Set Timer text to time
+								mCountDownTimer.setText("Time");
+
+								// Which ever Layout is not Gone == false. Add value.. to player 1
+								if(LayoutGone1 == false){
+									
+								}
+									
+
+							}
+						});
+
+						alert.show();
+					}
+				}.start();
+			}
+		});
+	}
+
+	public void SlideToDown(final RelativeLayout rL) {
+		Animation slide = null;
+		slide = new TranslateAnimation(Animation.RELATIVE_TO_SELF, 0.0f,
+				Animation.RELATIVE_TO_SELF, 0.0f, Animation.RELATIVE_TO_SELF,
+				0.0f, Animation.RELATIVE_TO_SELF, 5.2f);
+
+		slide.setDuration(400);
+		slide.setFillAfter(true);
+		slide.setFillEnabled(true);
+		rL.startAnimation(slide);
+
+		slide.setAnimationListener(new AnimationListener() {
+
+			@Override
+			public void onAnimationStart(Animation animation) {
+
+			}
+
+			@Override
+			public void onAnimationRepeat(Animation animation) {
+			}
+
+			@Override
+			public void onAnimationEnd(Animation animation) {
+
+				rL.clearAnimation();
+
+				RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(
+						rL.getWidth(), rL.getHeight());
+				lp.setMargins(0, rL.getWidth(), 0, 0);
+				lp.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
+				rL.setLayoutParams(lp);
+
+			}
+
+		});
+
+	}
+
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.registration, menu);
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// Handle action bar item clicks here. The action bar will
+		// automatically handle clicks on the Home/Up button, so long
+		// as you specify a parent activity in AndroidManifest.xml.
+		int id = item.getItemId();
+		if (id == R.id.action_settings) {
+			return true;
+		}
+		return super.onOptionsItemSelected(item);
+	}
+
+	@Override
+	public void onAnimationStart(Animation animation) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void onAnimationEnd(Animation animation) {
+		// Take any action after completing the animation
+
+		// check for fade out animation
+		if (animation == animFadeOut) {
+			Toast.makeText(getApplicationContext(), "Animation Stopped",
+					Toast.LENGTH_SHORT).show();
+			if(mLayoutGone1 == true){
+				mWorkoutLayout1.setVisibility(View.GONE);
+			}else if(mLayoutGone2 == true){
+				mWorkoutLayout2.setVisibility(View.GONE);
+			}else if(mLayoutGone3 == true){
+				mWorkoutLayout3.setVisibility(View.GONE);
+			}
+
+		}
+	}
+
+	@Override
+	public void onAnimationRepeat(Animation animation) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

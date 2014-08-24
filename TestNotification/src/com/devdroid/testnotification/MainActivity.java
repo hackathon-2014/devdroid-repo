@@ -4,6 +4,7 @@ import java.util.Calendar;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -53,9 +54,15 @@ public class MainActivity extends ActionBarActivity {
     	Calendar c = Calendar.getInstance();
     	c.set(year, month, day);
     	// This will be set with a time picker
-    	c.set(Calendar.HOUR_OF_DAY, 13);
-    	c.set(Calendar.MINUTE, 41);
-    	c.set(Calendar.SECOND, 0);
+    	Calendar rightNow = Calendar.getInstance();
+    	int hour = rightNow.get(Calendar.HOUR_OF_DAY);
+    	Log.d("dsfasd", String.valueOf(hour));
+    	int min = rightNow.get(Calendar.MINUTE);
+    	Log.d("dsfasd", String.valueOf(min));
+    	int sec = rightNow.get(Calendar.SECOND);
+    	c.set(Calendar.HOUR_OF_DAY, hour);
+    	c.set(Calendar.MINUTE, min + 1);
+    	c.set(Calendar.SECOND, sec);
     	// Ask our service to set an alarm for that date, this activity talks to the client that talks to the service
     	scheduleClient.setAlarmForNotification(c);
     	// Notify the user what they just did
